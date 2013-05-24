@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<bean id="gpioConfiguration" class="com.pfausoft.raspi.gpio.GpioConfiguration">
+
+		<property name="gpioDigitalOutputDefaultSettings">
+			<list>
+				<bean class="com.pfausoft.raspi.gpio.out.GpioDigOutConf">
+					<property name="id" value="0" />
+					<property name="pin">
+						<util:constant static-field="com.pi4j.io.gpio.RaspiPin.GPIO_00" />
+					</property>
+					<property name="pinState">
+						<util:constant static-field="com.pi4j.io.gpio.PinState.HIGH" />
+					</property>
+				</bean>
+				<bean class="com.pfausoft.raspi.gpio.out.GpioDigOutConf">
+					<property name="id" value="1" />
+					<property name="pin">
+						<util:constant static-field="com.pi4j.io.gpio.RaspiPin.GPIO_01" />
+					</property>
+					<property name="pinState">
+						<util:constant static-field="com.pi4j.io.gpio.PinState.HIGH" />
+					</property>
+				</bean>
+			</list>
+		</property>
+
+		<property name="gpioDigitalInputDefaultSettings">
+			<list>
+				<bean class="com.pfausoft.raspi.gpio.in.GpioDigInputConf">
+					<property name="id" value="2" />
+					<property name="pin">
+						<util:constant static-field="com.pi4j.io.gpio.RaspiPin.GPIO_02" />
+					</property>
+					<property name="pinPullResistance">
+						<util:constant static-field="com.pi4j.io.gpio.PinPullResistance.PULL_DOWN" />
+					</property>
+				</bean>
+			</list>
+		</property>
+
+	</bean>
+
+</beans>

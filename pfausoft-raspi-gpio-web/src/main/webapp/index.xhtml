@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<h:panelGrid columns="5">
+			<p:commandButton value="Toggle Gpio0" actionListener="#{raspiGpioBean.toggleGpio(0)}" update="gpioState0" />
+			<p:commandButton value="High Gpio0" actionListener="#{raspiGpioBean.setGpioState(0, true)}" update="gpioState0" />
+			<p:commandButton value="Low Gpio0" actionListener="#{raspiGpioBean.setGpioState(0, false)}" update="gpioState0" />
+			<p:commandButton value="Pulse Gpio0" actionListener="#{raspiGpioBean.pulseGpio(0, 2000, false, false)}"
+				update="gpioState0" />
+			<p:commandButton id="gpioState0" value="#{raspiGpioBean.getGpioHighState(0) == true ? 'High' : 'Low'}" />
+
+			<p:commandButton value="Toggle Gpio1" actionListener="#{raspiGpioBean.toggleGpio(1)}" update="gpioState1" />
+			<p:commandButton value="High Gpio1" actionListener="#{raspiGpioBean.setGpioState(1, true)}" update="gpioState1" />
+			<p:commandButton value="Low Gpio1" actionListener="#{raspiGpioBean.setGpioState(1, false)}" update="gpioState1" />
+			<p:commandButton value="Pulse Gpio1" actionListener="#{raspiGpioBean.pulseGpio(1, 4000, false, false)}"
+				update="gpioState1" />
+			<p:commandButton id="gpioState1" value="#{raspiGpioBean.getGpioHighState(1) == true ? 'High' : 'Low'}" />
+		</h:panelGrid>
+		<p:poll interval="5" update="gpioState0, gpioState1" />
+	</h:form>
+
+</h:body>
+</html>
