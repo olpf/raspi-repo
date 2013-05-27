@@ -74,8 +74,8 @@ public class RaspiGpioBean implements RaspiWebService {
     }
 
     @Override
-    public void pulseGpio0() {
-	pulseGpio("0", 2000, false, false);
+    public void pulseGpio(String gpioId) {
+	pulseGpio(gpioId, 2000, false, false);
     }
 
     public void pulseGpio(String id, long durationMs, boolean high, boolean block) {
